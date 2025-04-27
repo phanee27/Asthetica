@@ -59,3 +59,49 @@
     background-color: white;
     color: black;
 }
+
+.burger-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .nav-start-section {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+    }
+
+    .nav-mid-section,
+    .nav-end-section {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start;
+        display: none;
+        gap: 1rem;
+        margin-left: 0;
+        padding-top: 1rem;
+    }
+
+    .nav-mid-section.open,
+    .nav-end-section.open {
+        display: flex;
+    }
+
+    .burger-icon {
+        display: block;
+    }
+
+    .btn-login {
+        width: 100%;
+    }
+}
