@@ -35,7 +35,7 @@ public class Artwork {
     private Status status;
 
     @Column(name = "artwork_image_url", nullable = false, length = 500)
-    private String imageUrl;  // Store Cloudinary image URL
+    private String imageUrl;  // Store  image URL
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id", nullable = false)
