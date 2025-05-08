@@ -27,6 +27,10 @@ export const Login = () => {
     setMessage("");
   };
 
+  const handleLogin = () => {
+    window.location.href = "http://localhost:6969/oauth2/authorization/google";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -129,7 +133,7 @@ export const Login = () => {
               </button>
             </div>
             <div className="login-opts">
-              <button type="button">
+              <button type="button" onClick={handleLogin}>
                 <FaGoogle />
                 <p>Sign In with Google</p>
               </button>
