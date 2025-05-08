@@ -21,9 +21,14 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public String adduser(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		repository.save(user);
-		return "User Registered Successfully";
+		User u = repository.findByEmail(user.getEmail());
+		if(u == null) {
+			u.setPassword(passwordEncoder.encode(u.getPassword()));
+			repository.save(u);
+			return "User Registered Successfully";
+		}else {
+			return "User already Exists try another mail";
+		}
 	}
 
 	@Override

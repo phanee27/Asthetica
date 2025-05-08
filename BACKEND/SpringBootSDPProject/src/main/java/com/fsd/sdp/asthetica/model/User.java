@@ -24,15 +24,15 @@ public class User {
 	private int id;
 	@Column(nullable = false, length = 255)
 	private String name;
-	@Column(nullable = false, unique = true, length = 30)
+	@Column(nullable = true, unique = true, length = 30)
 	private String username;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String gender;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String password;
 	@Column(nullable = false, unique = true)
 	private String email;
-	@Column(nullable = false, length=10, unique = true)
+	@Column(nullable = true, length=10, unique = true)
 	private String contact;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_role")

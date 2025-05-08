@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fsd.sdp.asthetica.enumeration.Role;
 import com.fsd.sdp.asthetica.model.Artwork;
 import com.fsd.sdp.asthetica.model.User;
 import com.fsd.sdp.asthetica.service.ArtworkService;
@@ -36,6 +39,17 @@ public class CustomerController {
 	@PostMapping("/adduser")
 	public String adduser(@RequestBody User user) {
 		return service.adduser(user);
+	}
+	
+	@PostMapping("/adduseroauth")
+	public void adduseroauth(@AuthenticationPrincipal OAuth2User principal) {
+		User u = new User();
+		u.setName(principal.getAttribute("name"));
+		u.setEmail(principal.getAttribute("email"));
+		u.setProfileImage(principal.getAttribute("profile"));
+		u.setRole(Role.BUYER);
+		
+		System.out.println(service.adduser(u));
 	}
 	
 	@PutMapping("/requestSeller/{id}")
