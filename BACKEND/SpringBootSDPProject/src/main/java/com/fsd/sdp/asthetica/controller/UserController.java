@@ -24,6 +24,10 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	@GetMapping("/")
+	public String home() {
+		return "user home";
+	}
 	@PostMapping("/checkuserlogin")
 	public ResponseEntity<?> checkUserLogin(@RequestBody User user){
 	    User u = service.checkuserlogin(user.getUsername(), user.getPassword());
